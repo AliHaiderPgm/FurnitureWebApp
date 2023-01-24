@@ -1,0 +1,52 @@
+@import './scss/colors';
+@import './scss/bootstrap';
+@import './scss/Home';
+
+
+.bg-shadow{
+    box-shadow: $lightColor 129px 18px 1px 30px,
+            $lightColor -20px -10px 1px 0px;
+}
+.bg-shadowLeft{
+    box-shadow: $lightColor -20px -10px 1px 0px;
+}
+.bg-lightColor{
+    background-color: $lightColor;
+}
+.bg-darkColor{
+    background-color: $darkColor;
+}
+.bg-primaryColor{
+    background-color: $primaryColor !important;
+}
+.bg-secondaryColor{
+    background-color: $secondaryColor;
+}
+.bg-custom{
+    background-color: $secondaryColor;
+}
+.color{
+    color: #f6f7f8;
+}
+
+.priceColor{
+    color: $primaryColor;
+    font-weight: 700;
+}
+
+.faIcon{
+    span{
+        font-size: 4rem;
+        color: $primaryColor;
+    }
+}
+.faIconBlack{
+    span{
+        font-size: 2rem;
+        color: #222;
+    }
+}
+
+#root{
+    font-family: 'Poppins', sans-serif;
+}
