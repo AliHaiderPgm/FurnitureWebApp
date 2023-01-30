@@ -17,14 +17,14 @@ export default function Footer() {
               <li className='mb-2'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus, temporibus. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed, incidunt.</li>
             </ul>
             <div className="row flex-row">
-              <span className='col-1'>
-                <FontAwesomeIcon icon={faTwitter}/>
+              <span className='col-1 mx-1'>
+                <FontAwesomeIcon icon={faTwitter} style={{fontSize:'32px'}}/>
               </span>
-              <span className='col-1'>
-                <FontAwesomeIcon icon={faFacebook}/>
+              <span className='col-1 mx-1'>
+                <FontAwesomeIcon icon={faFacebook} style={{fontSize:'32px'}}/>
               </span>
-              <span className='col-1'>
-                <FontAwesomeIcon icon={faPinterest}/>
+              <span className='col-1 mx-1'>
+                <FontAwesomeIcon icon={faPinterest} style={{fontSize:'32px'}}/>
               </span>
             </div>
           </div>

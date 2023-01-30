@@ -1,8 +1,10 @@
 import './App.scss';
-import Router from './Pages/Router';
+import Router from './Pages/Frontend/Router';
 import { ThemeProvider } from '@mui/material';
 import {theme} from './Components/muiTheme'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
+import 'Components/Global'
+
 
 
 function App() {

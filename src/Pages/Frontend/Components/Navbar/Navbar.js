@@ -5,6 +5,8 @@ import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material';
 import InputBase from '@mui/material/InputBase';
+import { DownOutlined } from '@ant-design/icons';
+import { Dropdown } from 'antd';
 
 export default function Navbar() {
 
@@ -50,10 +52,37 @@ export default function Navbar() {
     },
   }));
 
+  const items = [
+    {
+      key: '1',
+      label: (
+        <Link className='nav-link' rel="noopener noreferrer" to='/categories'>
+          Categories
+        </Link>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <Link className='nav-link' rel="noopener noreferrer" to="/cart">
+          Cart
+        </Link>
+      ),
+    },
+    {
+      key: '3',
+      label: (
+        <Link className='nav-link' rel="noopener noreferrer" >
+          3rd menu item
+        </Link>
+      ),
+    },
+  ];
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary bg-lightColor fw-bold">
       <div className="container-fluid">
-        <Link className="navbar-brand" >
+        <Link className="navbar-brand" to='/'>
           <img src={logo} alt="FURN-Logo" width="65" height="65" />
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,14 +92,26 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" >Home</Link>
+              <Link className="nav-link active" aria-current="page" to='/'>Home</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" >About</Link>
+              <Link className="nav-link" to='/about'>About</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" >Product</Link>
+              <Link className="nav-link" to='/contact'>Contact</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to='/products'>Product</Link>
+            </li>
+            <Dropdown
+                menu={{
+                  items,
+                  selectable: true,
+                }}
+                placement="bottom"
+              >
+                <Link className='nav-link'>Pages <DownOutlined /></Link>
+              </Dropdown>
             <li className="nav-item">
               <Search>
                 <SearchIconWrapper>
