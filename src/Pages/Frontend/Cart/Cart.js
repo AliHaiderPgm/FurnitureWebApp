@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../Components/local/Header'
+import { Button } from '@mui/material';
 
 export default function Cart() {
   const [items, setItems] = useState([])
-  useEffect(() => {
+  const getData = ()=>{
     let items = localStorage.getItem('items')
     if (items === null) {
       setItems([])
@@ -11,9 +12,23 @@ export default function Cart() {
     else {
       let itemsObj = JSON.parse(items)
       setItems(itemsObj)
-      console.log(itemsObj)
     }
+  }
+  useEffect(() => {
+    getData()
   }, [])
+  const handleTotalCount = (e) => {
+    const array = JSON.parse(localStorage.getItem('items'))
+    const objToUpdate = array.find(obj => obj.id === e.id)
+    if (e.name === 'increment') {
+      objToUpdate.number++
+    }
+    else {
+      objToUpdate.number-- <= 1 ? objToUpdate.number = 1 : objToUpdate.number--
+    }
+    localStorage.setItem('items', JSON.stringify(array))
+    getData()
+  }
   return (
     <>
       <Header pageName="Cart" />
@@ -57,8 +72,13 @@ export default function Cart() {
                         {item.price}
                       </div>
                       <div className="col-2 ">
+                        <div className="container d-flex text-center align-items-center">
+                          <Button variant='outlined' onClick={() => handleTotalCount({ id: item.id, name: 'decrement' })}>-</Button>
+                          <div className="col-5 border p-2">{item.number}</div>
+                          <Button variant='outlined' onClick={() => handleTotalCount({ id: item.id, name: 'increment' })}>+</Button>
+                        </div>
                       </div>
-                      <hr className='mt-3'/>
+                      <hr className='mt-3' />
                     </div>
                   )
                 })

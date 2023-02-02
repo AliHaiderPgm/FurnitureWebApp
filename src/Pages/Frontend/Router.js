@@ -15,6 +15,7 @@ import Product from 'Pages/Frontend/Products'
 import Categories from 'Pages/Frontend/Categories/Categories'
 import ProductDetail from 'Pages/Frontend/ProductDetail'
 import Cart from 'Pages/Frontend/Cart'
+import Checkout from 'Pages/Frontend/Checkout'
 
 export default function Router() {
     return (
@@ -30,6 +31,7 @@ export default function Router() {
                         <Route path='/categories' element={<Categories />} />
                         <Route path='/productDetail' element={<ProductDetail />} />
                         <Route path='/cart' element={<Cart />} />
+                        <Route path='/checkout' element={<Checkout />} />
                     </Route>
                 </Routes>
                 <Footer />

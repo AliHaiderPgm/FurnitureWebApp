@@ -72,8 +72,8 @@ export default function Navbar() {
     {
       key: '3',
       label: (
-        <Link className='nav-link' rel="noopener noreferrer" >
-          3rd menu item
+        <Link className='nav-link' rel="noopener noreferrer" to='/checkout'>
+          Checkout
         </Link>
       ),
     },

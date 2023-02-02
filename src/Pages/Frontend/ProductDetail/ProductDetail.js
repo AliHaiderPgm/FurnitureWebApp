@@ -10,10 +10,11 @@ import DetailsReview from '../Components/local/Details&Reviews'
 
 
 export default function ProductDetail() {
-  const [number, setNumber] = useState(0)
+  const [number, setNumber] = useState(1)
   const location = useLocation()
   const data = location.state.data
   data.id = window.getRandomId()
+  data.number = number
   const smallImg = {
     height: '100px',
     objectFit: 'cover',
@@ -21,14 +22,23 @@ export default function ProductDetail() {
   const handleClick = (e) => {
     e.target.value === 'add' ? setNumber(number + 1) : setNumber(number <= 0 ? number : number - 1)
   }
-  const handleAddToCart = ()=>{
-    let items = localStorage.getItem('items')
+  // const getItems = ()=>{
+  // }
+  // useEffect(()=>{
+  //   getItems()
+  // },[])
+  const handleAddToCart = () => {
+    // getItems()
+    let items = null
+    items = localStorage.getItem('items')
     let itemsObj = null
-    if(items === null ){
+    if (items === null) {
       itemsObj = []
     }
-    else{
+    else {
       itemsObj = JSON.parse(items)
+      let oldObj = itemsObj.find(obj => obj.id === data.id)
+      console.log(oldObj)
     }
     itemsObj.push(data)
     localStorage.setItem('items', JSON.stringify(itemsObj))
@@ -86,7 +96,7 @@ export default function ProductDetail() {
           </div>
         </div>
         <div className="row pt-5">
-          <DetailsReview/>
+          <DetailsReview />
         </div>
       </div>
     </>
