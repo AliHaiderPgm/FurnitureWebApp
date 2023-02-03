@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../Components/local/Header'
 import Images from 'Assets/Images'
 import { useLocation } from 'react-router-dom'
@@ -7,41 +7,50 @@ import IconButton from '@mui/material/IconButton';
 import { Button } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import DetailsReview from '../Components/local/Details&Reviews'
+import { message } from 'antd';
 
 
 export default function ProductDetail() {
   const [number, setNumber] = useState(1)
   const location = useLocation()
   const data = location.state.data
-  data.id = window.getRandomId()
   data.number = number
   const smallImg = {
     height: '100px',
     objectFit: 'cover',
   }
   const handleClick = (e) => {
-    e.target.value === 'add' ? setNumber(number + 1) : setNumber(number <= 0 ? number : number - 1)
+    e.target.value === 'add' ? setNumber(number + 1) : setNumber(number <= 1 ? number : number - 1)
   }
-  // const getItems = ()=>{
-  // }
-  // useEffect(()=>{
-  //   getItems()
-  // },[])
+  useEffect(() => {
+    localStorage.getItem('items')
+  }, [])
   const handleAddToCart = () => {
-    // getItems()
-    let items = null
-    items = localStorage.getItem('items')
-    let itemsObj = null
-    if (items === null) {
-      itemsObj = []
+    try {
+      let items = null
+      items = localStorage.getItem('items')
+      let itemsObj = null
+      if (items === null) {
+        itemsObj = []
+        itemsObj.push(data)
+        localStorage.setItem('items', JSON.stringify(itemsObj))
+      }
+      else {
+        itemsObj = JSON.parse(items)
+        let oldObj = itemsObj.find(obj => obj.id === data.id)
+        if (oldObj === undefined) {
+          itemsObj.push(data)
+          localStorage.setItem('items', JSON.stringify(itemsObj))
+        }
+        else {
+          oldObj.number++
+          localStorage.setItem('items', JSON.stringify(itemsObj))
+        }
+      }
+      message.success('Added to cart');
+    } catch (err) {
+      message.error('Something went wrong!');
     }
-    else {
-      itemsObj = JSON.parse(items)
-      let oldObj = itemsObj.find(obj => obj.id === data.id)
-      console.log(oldObj)
-    }
-    itemsObj.push(data)
-    localStorage.setItem('items', JSON.stringify(itemsObj))
   }
   return (
     <>
@@ -68,7 +77,7 @@ export default function ProductDetail() {
               <div className="row">
                 <div className="col">
                   <h1>{data.title}</h1>
-                  <h2 className='text-primary'>{data.price}</h2>
+                  <h2 className='text-primary'>{data.price}$</h2>
                   <p>Category:&nbsp;&nbsp;&nbsp; {data.category}</p>
                   <p>Availibility:&nbsp;&nbsp;&nbsp;{data.availibility}</p>
                   <hr />

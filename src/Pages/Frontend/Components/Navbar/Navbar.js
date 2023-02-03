@@ -79,6 +79,7 @@ export default function Navbar() {
     },
   ];
 
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary bg-lightColor fw-bold">
       <div className="container-fluid">
@@ -104,14 +105,14 @@ export default function Navbar() {
               <Link className="nav-link" to='/products'>Product</Link>
             </li>
             <Dropdown
-                menu={{
-                  items,
-                  selectable: true,
-                }}
-                placement="bottom"
-              >
-                <Link className='nav-link'>Pages <DownOutlined /></Link>
-              </Dropdown>
+              menu={{
+                items,
+                selectable: true,
+              }}
+              placement="bottom"
+            >
+              <Link className='nav-link'>Pages<DownOutlined /></Link>
+            </Dropdown>
             <li className="nav-item">
               <Search>
                 <SearchIconWrapper>
@@ -127,13 +128,15 @@ export default function Navbar() {
           </ul>
           <Link className='nav-link me-2 my-2 my-md-0'>My Account</Link>
           <button type="button" className="btn position-relative p-0 mb-4 mb-md-0 me-0 me-md-3">
-            <ShoppingCartRoundedIcon />
-            <span className="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-primaryColor">
+            <Link to="/cart">
+              <ShoppingCartRoundedIcon />
+            </Link>
+            {/* <span className="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-primaryColor">
               0
               <span className="visually-hidden">
                 Cart Items
               </span>
-            </span>
+            </span> */}
           </button>
 
         </div>

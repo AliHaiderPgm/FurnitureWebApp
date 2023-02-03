@@ -7,8 +7,13 @@ import Images from 'Assets/Images';
 import OurServices from 'Pages/Frontend/Components/local/OurServices';
 import InstagramSection from 'Pages/Frontend/Components/local/InstagramSection';
 import CustomCard from 'Pages/Frontend/Components/local/CustomCard';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
+  const navigate = useNavigate()
+  const naviagteToCategories = () => {
+    navigate('/products')
+  }
   return (
     <>
 
@@ -61,7 +66,7 @@ export default function Home() {
                 <h1>Best Furniture Manufacturer</h1>
                 <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, ut.<br /> <br />
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, doloribus. </p>
-                <Button variant="contained" className='text-white w-50 p-3 bg-primaryColor'>Discover More</Button>
+                <Button variant="contained" onClick={naviagteToCategories} className='text-white w-50 p-3 bg-primaryColor'>Discover More</Button>
               </div>
             </div>
           </div>
@@ -92,7 +97,7 @@ export default function Home() {
                 <CustomCard image="chair3" />
               </div>
               <div className="col">
-                <Button variant="outlined" className=' px-5 py-3 my-4'>Discover more</Button>
+                <Button variant="outlined" className=' px-5 py-3 my-4' onClick={naviagteToCategories}>Discover more</Button>
               </div>
             </div>
           </div>
@@ -118,16 +123,16 @@ export default function Home() {
           <div className="container">
             <div className="row g-2  offset-md-0">
               <div className="col-sm-12 col-md-5 col-lg-4">
-              <CustomCard image="sofa1"/>
+                <CustomCard image="sofa1" />
               </div>
               <div className="col-sm-12 col-md-5 offset-sm-0 offset-md-2 offset-lg-0 col-lg-4">
-              <CustomCard image="sofa2"/>
+                <CustomCard image="sofa2" />
               </div>
               <div className="col-sm-12 col-lg-4">
-              <CustomCard image="sofa3"/>
+                <CustomCard image="sofa3" />
               </div>
               <div className="col">
-                <Button variant="outlined" className=' px-5 py-3 my-4'>Discover more</Button>
+                <Button variant="outlined" className=' px-5 py-3 my-4' onClick={naviagteToCategories}>Discover more</Button>
               </div>
             </div>
           </div>
