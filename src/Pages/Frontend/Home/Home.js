@@ -23,10 +23,10 @@ export default function Home() {
             <img src={Images.hero1} alt="FURN" className='img-fluid bg-shadow' style={{ minHeight: '80vh', maxHeight: '100vh', width: '98%', objectFit: 'cover', objectPosition: '55%' }} />
           </div>
           <div className="col-9 col-md-4 position-absolute" style={{ top: '20%', left: '16%' }}>
-            <Card style={{ maxWidth: '100%', minWidth: '100%', maxHeight: 400, minHeight: 320 }} className='d-flex flex-column justify-content-center'>
+            <Card className='d-flex flex-column justify-content-center'>
               <h5 className='text-muted text-uppercase mb-3 mb-md-0'>70% Sales off</h5>
-              <h1 className='text-uppercase mb-3 mb-md-1' style={{ fontWeight: '800' }}>Furniture at cost</h1>
-              <p className='text-muted mb-4 mb-md-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos reprehenderit asperiores velit nobis sapiente veniam?</p>
+              <h1 className='text-uppercase my-3 fs-1' style={{ fontWeight: '800' }}>Furniture at cost</h1>
+              <p className='text-muted mb-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos reprehenderit asperiores velit nobis sapiente veniam?</p>
               <Button variant="contained" className='text-white w-50 p-3 bg-primaryColor'>Discover More</Button>
             </Card>
           </div>

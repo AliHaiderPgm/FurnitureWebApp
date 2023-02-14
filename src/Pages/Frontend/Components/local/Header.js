@@ -21,7 +21,7 @@ export default function Header(props) {
                     <img src={aboutMain} alt="Room" className='img-fluid bg-shadow' style={{ minHeight: '30vh', objectFit: 'cover', objectPosition: '62%' }} />
                 </div>
                 <div className="col-8 position-absolute text-white fs-1" style={{ top: '40%', left: '10%' }}>
-                    <h1 className='text-uppercase fw-bold'>{props.pageName}</h1>
+                    <h1 className='text-uppercase fw-bold' style={{fontSize:"calc(1.375rem + 1.5vw)"}}>{props.pageName}</h1>
                     <Stack spacing={2}>
                         <Breadcrumbs separator="›" aria-label="breadcrumb" className='text-white'>
                             {breadcrumbs}

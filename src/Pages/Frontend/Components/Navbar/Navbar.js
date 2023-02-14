@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom'
 import logo from '../../../../Assets/Images/logo2.png'
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import SearchIcon from '@mui/icons-material/Search';
-import { styled, alpha } from '@mui/material';
+import { styled, alpha, Button } from '@mui/material';
 import InputBase from '@mui/material/InputBase';
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown } from 'antd';
+import { useAuth } from 'Context/AuthContext'
+import { getAuth, signOut } from 'firebase/auth';
+import { message } from 'antd';
 
 export default function Navbar() {
+  const [messageApi, contextHolder] = message.useMessage();
 
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -79,8 +83,24 @@ export default function Navbar() {
     },
   ];
 
+  const notify = (type, msg) => {
+    messageApi.open({ type: type, content: msg });
+  };
+
+  const { isAuthenticated,dispatch } = useAuth()
+  const handleLogout = () => {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      dispatch({type:"LOGOUT"})
+      notify('success', 'Logged out')
+    }).catch((error) => {
+      notify('error', 'Something went wrong!')
+    });
+  }
 
   return (
+   <>
+     {contextHolder}
     <nav className="navbar navbar-expand-lg bg-body-tertiary bg-lightColor fw-bold">
       <div className="container-fluid">
         <Link className="navbar-brand" to='/'>
@@ -126,7 +146,10 @@ export default function Navbar() {
               </Search>
             </li>
           </ul>
-          <Link className='nav-link me-2 my-2 my-md-0'>My Account</Link>
+          {
+            !isAuthenticated ? <Link className='nav-link me-2 my-2 my-md-0' to="/auth/signIn">Sign in</Link>
+              : <Button variant='text' onClick={handleLogout}>Sign out</Button>
+          }
           <button type="button" className="btn position-relative p-0 mb-4 mb-md-0 me-0 me-md-3">
             <Link to="/cart">
               <ShoppingCartRoundedIcon />
@@ -143,5 +166,6 @@ export default function Navbar() {
 
       </div>
     </nav>
+   </>
   )
 }
